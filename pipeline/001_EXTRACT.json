@@ -30,6 +30,7 @@
 						}
 					},
 					"enableStaging": false,
+					"dataIntegrationUnits": 4,
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [
@@ -142,6 +143,7 @@
 						}
 					},
 					"enableStaging": false,
+					"dataIntegrationUnits": 4,
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [
@@ -230,6 +232,7 @@
 						}
 					},
 					"enableStaging": false,
+					"dataIntegrationUnits": 4,
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [
