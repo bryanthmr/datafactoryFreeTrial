@@ -1,0 +1,15 @@
+{
+	"name": "Orders",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EISTI_CONNECT",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MariaDBTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "orders"
+		}
+	}
+}
