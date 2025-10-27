@@ -3,7 +3,16 @@
 	"properties": {
 		"type": "WranglingDataFlow",
 		"typeProperties": {
-			"sources": []
+			"sources": [
+				{
+					"name": "CustomersCSV",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~>  CustomersCSV",
+					"dataset": {
+						"referenceName": "CustomersCSV",
+						"type": "DatasetReference"
+					}
+				}
+			]
 		}
 	}
 }
