@@ -1,0 +1,9 @@
+{
+	"name": "DataFactoryBTH1",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f9ccbe08-88c0-4ad5-89cd-4784a9bca38f",
+		"tenantId": "b8c19512-2aed-471d-a8d1-9b06e7da786a"
+	}
+}

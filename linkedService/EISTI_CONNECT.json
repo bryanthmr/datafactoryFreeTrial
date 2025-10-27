@@ -1,0 +1,18 @@
+{
+	"name": "EISTI_CONNECT",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "MariaDB",
+		"typeProperties": {
+			"server": "dataphore.freeboxos.fr",
+			"port": "6033",
+			"database": "eisti",
+			"username": "eisti",
+			"driverVersion": "v2",
+			"sslMode": 1,
+			"useSystemTrustStore": 0,
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQENDRDEwMkMzLTBERjEtNDQ4OS04RURDLThENTQyNTdBNzRCQ19mNmJiYTQyOS1jMzQ1LTRkNzYtOWJhYy1lMDU3Mzc5NTFjZTciDQp9"
+		}
+	}
+}
