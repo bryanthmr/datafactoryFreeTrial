@@ -19,6 +19,23 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "id_customer",
+				"type": "String"
+			},
+			{
+				"name": "order_datetime",
+				"type": "String"
+			},
+			{
+				"name": "id_product",
+				"type": "String"
+			},
+			{
+				"name": "quantity",
+				"type": "String"
+			}
+		]
 	}
 }

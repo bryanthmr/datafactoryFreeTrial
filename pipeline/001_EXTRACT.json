@@ -21,7 +21,8 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
@@ -41,9 +42,9 @@
 									"physicalType": "Int32"
 								},
 								"sink": {
-									"name": "id_customer",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "String",
+									"ordinal": 1
 								}
 							},
 							{
@@ -53,9 +54,9 @@
 									"physicalType": "VarChar"
 								},
 								"sink": {
-									"name": "first_name",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "String",
+									"ordinal": 2
 								}
 							},
 							{
@@ -65,9 +66,9 @@
 									"physicalType": "VarChar"
 								},
 								"sink": {
-									"name": "last_name",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "String",
+									"ordinal": 3
 								}
 							},
 							{
@@ -77,9 +78,9 @@
 									"physicalType": "Int32"
 								},
 								"sink": {
-									"name": "age",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "String",
+									"ordinal": 4
 								}
 							},
 							{
@@ -89,9 +90,9 @@
 									"physicalType": "Int32"
 								},
 								"sink": {
-									"name": "groupe_client",
 									"type": "String",
-									"physicalType": "String"
+									"physicalType": "String",
+									"ordinal": 5
 								}
 							}
 						],
@@ -134,7 +135,8 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
@@ -149,36 +151,48 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "product_id",
+									"name": "id_customer",
 									"type": "Int32",
 									"physicalType": "Int32"
 								},
 								"sink": {
-									"name": "product_id",
+									"name": "id_customer",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "product_name",
-									"type": "String",
-									"physicalType": "VarChar"
+									"name": "order_datetime",
+									"type": "DateTime",
+									"physicalType": "DateTime"
 								},
 								"sink": {
-									"name": "product_name",
+									"name": "order_datetime",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "unit_price",
-									"type": "Decimal",
-									"physicalType": "NewDecimal"
+									"name": "id_product",
+									"type": "Int32",
+									"physicalType": "Int32"
 								},
 								"sink": {
-									"name": "unit_price",
+									"name": "id_product",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "quantity",
+									"type": "Int32",
+									"physicalType": "Int32"
+								},
+								"sink": {
+									"name": "quantity",
 									"type": "String",
 									"physicalType": "String"
 								}
@@ -193,7 +207,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Products",
+						"referenceName": "Orders",
 						"type": "DatasetReference"
 					}
 				],
@@ -223,7 +237,8 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
@@ -292,49 +307,6 @@
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "Jointure",
-				"type": "ExecuteWranglingDataflow",
-				"dependsOn": [
-					{
-						"activity": "Customers Copy",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "Orders Copy",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "Products Copy",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataflow": {
-						"referenceName": "powerquery1",
-						"type": "DataFlowReference"
-					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					},
-					"queries": []
-				}
 			}
 		],
 		"annotations": []
