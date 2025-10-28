@@ -364,6 +364,182 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Filtered Data Copy",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "powerquery1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "MergeFiles"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "id_customer",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "id_customer",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "customer_name",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "age",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "age",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "groupe_client",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "groupe_client",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "order_month",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "order_month",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "id_product",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "id_product",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "quantity",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "quantity",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "product_name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "product_name",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "unit_price",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "unit_price",
+									"type": "String",
+									"physicalType": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "FilteredData",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "FilteredData",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"annotations": []
