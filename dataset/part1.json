@@ -1,0 +1,61 @@
+{
+	"name": "part1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "part-00000-6c71bfc6-c93a-473d-b53b-b80f23ae692e-c000.csv",
+				"folderPath": "part",
+				"container": "ordersdata"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "id_customer",
+				"type": "String"
+			},
+			{
+				"name": "customer_name",
+				"type": "String"
+			},
+			{
+				"name": "age",
+				"type": "String"
+			},
+			{
+				"name": "groupe_client",
+				"type": "String"
+			},
+			{
+				"name": "order_month",
+				"type": "String"
+			},
+			{
+				"name": "id_product",
+				"type": "String"
+			},
+			{
+				"name": "quantity",
+				"type": "String"
+			},
+			{
+				"name": "product_name",
+				"type": "String"
+			},
+			{
+				"name": "unit_price",
+				"type": "String"
+			}
+		]
+	}
+}
