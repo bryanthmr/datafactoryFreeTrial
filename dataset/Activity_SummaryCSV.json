@@ -1,0 +1,69 @@
+{
+	"name": "Activity_SummaryCSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "activity_summary.csv",
+				"folderPath": "data",
+				"container": "ordersdata"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "month",
+				"type": "String"
+			},
+			{
+				"name": "CA",
+				"type": "String"
+			},
+			{
+				"name": "totalQuantity",
+				"type": "String"
+			},
+			{
+				"name": "nbOrders",
+				"type": "String"
+			},
+			{
+				"name": "nbClients",
+				"type": "String"
+			},
+			{
+				"name": "avgAge",
+				"type": "String"
+			},
+			{
+				"name": "avgPurchaseAmount",
+				"type": "String"
+			},
+			{
+				"name": "returnRate",
+				"type": "String"
+			},
+			{
+				"name": "topClient",
+				"type": "String"
+			},
+			{
+				"name": "topProduct",
+				"type": "String"
+			},
+			{
+				"name": "topGroup",
+				"type": "String"
+			}
+		]
+	}
+}
