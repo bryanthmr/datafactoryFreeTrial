@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "part-00000-6c71bfc6-c93a-473d-b53b-b80f23ae692e-c000.csv",
+				"fileName": "data",
 				"folderPath": "part",
 				"container": "ordersdata"
 			},
