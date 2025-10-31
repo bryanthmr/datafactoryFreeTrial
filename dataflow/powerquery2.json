@@ -1,0 +1,20 @@
+{
+	"name": "powerquery2",
+	"properties": {
+		"type": "WranglingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "FilteredData",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~>  FilteredData",
+					"dataset": {
+						"referenceName": "FilteredData",
+						"type": "DatasetReference"
+					}
+				}
+			],
+			"script": "section Section1;\r\nshared FilteredData = let AdfDoc = AzureStorage.BlobContents(\"https://stockagebth.blob.core.windows.net/ordersdata/data/filteredData.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),\r\n  #\"Type de colonne changé\" = Table.TransformColumnTypes(PromotedHeaders, {{\"order_month\", type datetime}}),\r\n  #\"Mois extrait\" = Table.TransformColumns(#\"Type de colonne changé\", {{\"order_month\", each Date.Month(_), type nullable number}}),\r\n  #\"Colonne personnalisée ajoutée\" = Table.TransformColumnTypes(Table.AddColumn(#\"Mois extrait\", \"total_order\", each [unit_price] * [quantity]), {{\"total_order\", type number}}),\r\n  #\"Type de colonne changé 1\" = Table.TransformColumnTypes(#\"Colonne personnalisée ajoutée\", {{\"unit_price\", type number}, {\"quantity\", Int64.Type}}),\r\n  #\"Colonnes supprimées\" = Table.RemoveColumns(#\"Type de colonne changé 1\", {\"total_order\"}),\r\n  #\"Colonne personnalisée ajoutée 1\" = Table.TransformColumnTypes(Table.AddColumn(#\"Colonnes supprimées\", \"total_order\", each [unit_price] * [quantity]), {{\"total_order\", type number}}),\r\n  #\"Lignes groupées\" = Table.Group(#\"Colonne personnalisée ajoutée 1\", {\"order_month\"}, {{\"CA\", each List.Sum([total_order]), type nullable number}}) in  #\"Lignes groupées\";\r\nshared UserQuery = let Source = #\"FilteredData\" in Source;\r\n",
+			"documentLocale": "en-us"
+		}
+	}
+}
