@@ -172,7 +172,7 @@
 				]
 			},
 			{
-				"name": "CreateMeasures",
+				"name": "powerquery2",
 				"type": "ExecuteWranglingDataflow",
 				"dependsOn": [
 					{
@@ -204,85 +204,17 @@
 							"queryName": "UserQuery",
 							"dataflowSinks": [
 								{
-									"name": "UserQueryparts2",
+									"name": "UserQueryActivitySummaryCSV",
 									"dataset": {
-										"referenceName": "parts2",
+										"referenceName": "Activity_SummaryCSV",
 										"type": "DatasetReference"
 									},
-									"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> UserQueryparts2"
+									"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tmonth as string,\n\t\tCA as string,\n\t\ttotalQuantity as string,\n\t\tnbOrders as string,\n\t\tnbClients as string,\n\t\tavgAge as string,\n\t\tavgPurchaseAmount as string,\n\t\treturnRate as string,\n\t\ttopClient as string,\n\t\ttopProduct as string,\n\t\ttopGroup as string\n\t),\n\tpartitionFileNames:['activity_summary.csv'],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tpartitionBy('hash', 1)) ~> UserQueryActivitySummaryCSV"
 								}
 							]
 						}
 					]
 				}
-			},
-			{
-				"name": "MergeParts",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "CreateMeasures",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"wildcardFolderPath": "part2",
-							"wildcardFileName": "part-*",
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
-					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings",
-							"copyBehavior": "MergeFiles"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "part2",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "Activity_SummaryCSV",
-						"type": "DatasetReference"
-					}
-				]
 			}
 		],
 		"annotations": []
