@@ -1,5 +1,5 @@
 {
-	"name": "FilteredData",
+	"name": "RawData",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",

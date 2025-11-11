@@ -29,10 +29,10 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "FilteredData",
+						"referenceName": "RawData",
 						"type": "DatasetReference"
 					},
-					"name": "FilteredData"
+					"name": "RawData"
 				}
 			],
 			"transformations": [
@@ -134,14 +134,14 @@
 				"          age as string,",
 				"          groupe_client as string",
 				"     ),",
-				"     partitionFileNames:['FilteredData.csv'],",
+				"     partitionFileNames:['RawData.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     saveOrder: 1,",
-				"     partitionBy('hash', 1)) ~> FilteredData"
+				"     partitionBy('hash', 1)) ~> RawData"
 			]
 		}
 	}

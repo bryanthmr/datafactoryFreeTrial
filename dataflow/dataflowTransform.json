@@ -6,10 +6,10 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "FilteredData",
+						"referenceName": "RawData",
 						"type": "DatasetReference"
 					},
-					"name": "FilteredData"
+					"name": "RawData"
 				}
 			],
 			"sinks": [],
@@ -42,8 +42,8 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> FilteredData",
-				"FilteredData derive(order_month = month(order_datetime),",
+				"     ignoreNoFilesFound: false) ~> RawData",
+				"RawData derive(order_month = month(order_datetime),",
 				"          order_name = concat({first name},' ',{last name}),",
 				"          total_order = quantity * unit_price) ~> CreateColumns",
 				"CreateColumns select(mapColumn(",
