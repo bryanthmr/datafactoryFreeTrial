@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "filteredData.csv",
 				"folderPath": "data",
 				"fileSystem": "ordersdata"
 			},
