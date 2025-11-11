@@ -1,5 +1,5 @@
 {
-	"name": "dataflow1",
+	"name": "dataflowExtract",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
