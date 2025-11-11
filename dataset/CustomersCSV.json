@@ -21,18 +21,23 @@
 		},
 		"schema": [
 			{
+				"name": "id_customer",
 				"type": "String"
 			},
 			{
+				"name": "first name",
 				"type": "String"
 			},
 			{
+				"name": "last name",
 				"type": "String"
 			},
 			{
+				"name": "age",
 				"type": "String"
 			},
 			{
+				"name": "groupe_client",
 				"type": "String"
 			}
 		]
