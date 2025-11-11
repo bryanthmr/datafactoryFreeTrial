@@ -134,12 +134,14 @@
 				"          age as string,",
 				"          groupe_client as string",
 				"     ),",
+				"     partitionFileNames:['FilteredData.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     saveOrder: 1) ~> FilteredData"
+				"     saveOrder: 1,",
+				"     partitionBy('hash', 1)) ~> FilteredData"
 			]
 		}
 	}
