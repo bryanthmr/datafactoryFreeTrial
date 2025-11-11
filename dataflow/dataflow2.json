@@ -1,0 +1,37 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "FilteredData",
+						"type": "DatasetReference"
+					},
+					"name": "FilteredData"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          id_orders as string,",
+				"          order_datetime as string,",
+				"          id_product as string,",
+				"          quantity as string,",
+				"          product_name as string,",
+				"          unit_price as string,",
+				"          id_customer as string,",
+				"          {first name} as string,",
+				"          {last name} as string,",
+				"          age as string,",
+				"          groupe_client as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> FilteredData"
+			]
+		}
+	}
+}
