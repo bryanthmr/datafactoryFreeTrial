@@ -13,24 +13,55 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "CreateColumns",
+					"description": "Creation d'une colonne Mois , et ordername\n"
+				},
+				{
+					"name": "RemoveColumns",
+					"description": "suppression de order date time , first name et last name"
+				},
+				{
+					"name": "AggregateColumns"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
-				"          id_orders as string,",
-				"          order_datetime as string,",
-				"          id_product as string,",
-				"          quantity as string,",
+				"          id_orders as integer,",
+				"          order_datetime as date,",
+				"          id_product as integer,",
+				"          quantity as integer,",
 				"          product_name as string,",
-				"          unit_price as string,",
-				"          id_customer as string,",
+				"          unit_price as float,",
+				"          id_customer as integer,",
 				"          {first name} as string,",
 				"          {last name} as string,",
-				"          age as string,",
-				"          groupe_client as string",
+				"          age as integer,",
+				"          groupe_client as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> FilteredData"
+				"     ignoreNoFilesFound: false) ~> FilteredData",
+				"FilteredData derive(order_month = month(order_datetime),",
+				"          order_name = concat({first name},' ',{last name}),",
+				"          total_order = quantity * unit_price) ~> CreateColumns",
+				"CreateColumns select(mapColumn(",
+				"          id_orders,",
+				"          order_month,",
+				"          id_product,",
+				"          quantity,",
+				"          product_name,",
+				"          unit_price,",
+				"          id_customer,",
+				"          order_name,",
+				"          age,",
+				"          groupe_client,",
+				"          total_order",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> RemoveColumns",
+				"RemoveColumns aggregate() ~> AggregateColumns"
 			]
 		}
 	}
