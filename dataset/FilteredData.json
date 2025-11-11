@@ -21,23 +21,11 @@
 		},
 		"schema": [
 			{
-				"name": "id_customer",
+				"name": "id_orders",
 				"type": "String"
 			},
 			{
-				"name": "customer_name",
-				"type": "String"
-			},
-			{
-				"name": "age",
-				"type": "String"
-			},
-			{
-				"name": "groupe_client",
-				"type": "String"
-			},
-			{
-				"name": "order_month",
+				"name": "order_datetime",
 				"type": "String"
 			},
 			{
@@ -54,6 +42,26 @@
 			},
 			{
 				"name": "unit_price",
+				"type": "String"
+			},
+			{
+				"name": "id_customer",
+				"type": "String"
+			},
+			{
+				"name": "first name",
+				"type": "String"
+			},
+			{
+				"name": "last name",
+				"type": "String"
+			},
+			{
+				"name": "age",
+				"type": "String"
+			},
+			{
+				"name": "groupe_client",
 				"type": "String"
 			}
 		]
