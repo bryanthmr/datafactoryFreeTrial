@@ -307,63 +307,6 @@
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "powerquery1",
-				"type": "ExecuteWranglingDataflow",
-				"dependsOn": [
-					{
-						"activity": "Customers Copy",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "Orders Copy",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "Products Copy",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataflow": {
-						"referenceName": "powerquery1",
-						"type": "DataFlowReference"
-					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					},
-					"queries": [
-						{
-							"queryName": "UserQuery",
-							"dataflowSinks": [
-								{
-									"name": "UserQueryFilteredData",
-									"dataset": {
-										"referenceName": "FilteredData",
-										"type": "DatasetReference"
-									},
-									"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tid_customer as string,\n\t\tcustomer_name as string,\n\t\tage as string,\n\t\tgroupe_client as string,\n\t\torder_month as string,\n\t\tid_product as string,\n\t\tquantity as string,\n\t\tproduct_name as string,\n\t\tunit_price as string\n\t),\n\tpartitionFileNames:['filteredData.csv'],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tpartitionBy('hash', 1)) ~> UserQueryFilteredData"
-								}
-							]
-						}
-					]
-				}
 			}
 		],
 		"annotations": []

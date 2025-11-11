@@ -2,17 +2,17 @@
 	"name": "Activity_SummaryCSV",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage1",
+			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
+				"type": "AzureBlobFSLocation",
 				"fileName": "activity_summary.csv",
 				"folderPath": "data",
-				"container": "ordersdata"
+				"fileSystem": "ordersdata"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
