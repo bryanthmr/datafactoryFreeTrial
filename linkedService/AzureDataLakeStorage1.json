@@ -5,8 +5,8 @@
 		"annotations": [],
 		"type": "AzureBlobFS",
 		"typeProperties": {
-			"url": "https://stockagebth.dfs.core.windows.net/",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQENDRDEwMkMzLTBERjEtNDQ4OS04RURDLThENTQyNTdBNzRCQ18yYmZmNDFmYi1lOTllLTQ0NDAtOWFmMy1iZmQzMzk3NGQ4ZDUiDQp9"
+			"url": "https://azuredatalakebth.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQENDRDEwMkMzLTBERjEtNDQ4OS04RURDLThENTQyNTdBNzRCQ19jM2NmYTU4MS0zZjFjLTRmYTgtOTI4Ni01ODNjMzhmOTk4MWMiDQp9"
 		}
 	}
 }
