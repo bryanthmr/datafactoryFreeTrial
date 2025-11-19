@@ -61,7 +61,11 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> RemoveColumns",
-				"RemoveColumns aggregate() ~> AggregateColumns"
+				"RemoveColumns aggregate(groupBy(order_month),",
+				"     CA = sum(total_order),",
+				"          nbOrders = count(id_orders),",
+				"          quantitySold = sumIf(quantity >= 0,quantity),",
+				"          quantityReturned = sumIf(quantity<0, quantity)) ~> AggregateColumns"
 			]
 		}
 	}
