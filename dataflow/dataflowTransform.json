@@ -24,6 +24,36 @@
 				},
 				{
 					"name": "AggregateColumns"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "sort1"
+				},
+				{
+					"name": "sort2"
+				},
+				{
+					"name": "aggregate2"
+				},
+				{
+					"name": "aggregate3"
+				},
+				{
+					"name": "sort3"
+				},
+				{
+					"name": "aggregate4"
+				},
+				{
+					"name": "aggregate5"
+				},
+				{
+					"name": "sort4"
+				},
+				{
+					"name": "aggregate6"
 				}
 			],
 			"scriptLines": [
@@ -69,7 +99,29 @@
 				"          avgQuantity = avg(quantity),",
 				"          nbCustomers = countDistinct(id_customer, order_name),",
 				"          avgAge = avg(age),",
-				"          avgPurchaseAmount = avg(total_order)) ~> AggregateColumns"
+				"          avgPurchaseAmount = avg(total_order)) ~> AggregateColumns",
+				"RemoveColumns aggregate(groupBy(order_month,",
+				"          order_name),",
+				"     CA = sum(total_order)) ~> aggregate1",
+				"aggregate1 sort(asc(order_month, true),",
+				"     desc(CA, true)) ~> sort1",
+				"AggregateColumns sort(asc(order_month, true)) ~> sort2",
+				"sort1 aggregate(groupBy(order_month),",
+				"     bestCustomer = first(order_name)) ~> aggregate2",
+				"RemoveColumns aggregate(groupBy(order_month,",
+				"          product_name),",
+				"     CA = sum(total_order)) ~> aggregate3",
+				"aggregate3 sort(asc(order_month, true),",
+				"     desc(CA, true)) ~> sort3",
+				"sort3 aggregate(groupBy(order_month),",
+				"     bestProduct = first(product_name)) ~> aggregate4",
+				"RemoveColumns aggregate(groupBy(order_month,",
+				"          groupe_client),",
+				"     CA = sum(total_order)) ~> aggregate5",
+				"aggregate5 sort(asc(order_month, true),",
+				"     desc(CA, true)) ~> sort4",
+				"sort4 aggregate(groupBy(order_month),",
+				"     bestGroupeClient = first(groupe_client)) ~> aggregate6"
 			]
 		}
 	}
