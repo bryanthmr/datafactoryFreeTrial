@@ -188,6 +188,7 @@
 				"          topProduct as string,",
 				"          topGroup as string",
 				"     ),",
+				"     partitionFileNames:['activity_summary.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
