@@ -65,7 +65,11 @@
 				"     CA = sum(total_order),",
 				"          nbOrders = count(id_orders),",
 				"          quantitySold = sumIf(quantity >= 0,quantity),",
-				"          quantityReturned = sumIf(quantity<0, quantity)) ~> AggregateColumns"
+				"          quantityReturned = sumIf(quantity<0, quantity),",
+				"          avgQuantity = avg(quantity),",
+				"          nbCustomers = countDistinct(id_customer, order_name),",
+				"          avgAge = avg(age),",
+				"          avgPurchaseAmount = avg(total_order)) ~> AggregateColumns"
 			]
 		}
 	}
