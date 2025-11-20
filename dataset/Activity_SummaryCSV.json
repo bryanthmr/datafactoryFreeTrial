@@ -10,8 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "activity_summary.csv",
-				"folderPath": "data",
 				"fileSystem": "ordersdata"
 			},
 			"columnDelimiter": ",",
