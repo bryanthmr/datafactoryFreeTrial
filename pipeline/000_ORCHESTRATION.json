@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Execute Pipeline1",
+				"name": "001_EXTRACT",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
 				"policy": {
@@ -13,6 +13,29 @@
 				"typeProperties": {
 					"pipeline": {
 						"referenceName": "001_EXTRACT",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "002_TRANSFORM",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "001_EXTRACT",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "002_TRANSFORM",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
